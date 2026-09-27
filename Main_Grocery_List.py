@@ -15,14 +15,18 @@ def main():
         user_name = input("Enter your name: ")
         grocery_item = input("Enter a grocery item: ")
         grocery_quantity = int(input("Enter the quantity: "))
-        groceries.add_item(user_name, grocery_item, grocery_quantity)
-        for name, item, quantity in groceries.items:
-            print(f" {name} has added {item}: {quantity} to the list")
+        if any(item == grocery_item for name, item, quantity in groceries.items):
+            print("Item alredy in list")
+        else:
+            groceries.add_item(user_name, grocery_item, grocery_quantity)
+            for name, item, quantity in groceries.items:
+                print(f" {name} has added {item}: {quantity} to the list")
         answer = input("add another item (yes/no)?: ")
+        
 
     print("Your grocery list:")
     for name, item, quantity in groceries.items:
-        print(f" {name}: {item}: {quantity} to the list")
+        print(f" {name}: {item}-{quantity} ")
 
 
 
